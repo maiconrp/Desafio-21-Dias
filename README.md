@@ -1,22 +1,19 @@
 # Desafio 21 Dias - Rocketseat
- 1.
- 2.
- 3.
- 4.
- 5.
- 6.
- 7.
- 8.
- 9.
- 10.
- 11.
- 12.
- 13.
- 14.
- 15.
- 16.
- 17.
- 18.
- 19.
- 20.
- 21.
+### **Regras**
+>Todos os dias, você vai ter que codar por pelo menos uma hora! 
+
+>Você deve compartilhar todos os dias seu progresso nas suas redes sociais e marcar a @rocketseat_oficial com a hashtag #21diasdecodigo que iremos repostar.
+
+>Gerar networking com as pessoas que também estão participando desse desafio.
+
+## **Desafios**
+
+1. [ ] **DIA 01**: Crie um repositório para listar os projetos que serão desenvolvidos durante os 21 dias de código
+2. [ ] **DIA 02**: Faça um Hello World customizado com fontes, cores e magens.
+3. [ ] **DIA 03**:	Crie um botão animado.
+4. [ ] **DIA 04**:	Crie uma calculadora.
+5. [ ] **DIA 05**:	Desenvolva uma página customizada que exiba o erro 404.
+6. [ ] **DIA 06**:	Crie um card com o efeito glassmorphism.
+7. [ ] **DIA 07**:	Desenvolva Desenv um contador.
+
+
