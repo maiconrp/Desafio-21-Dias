@@ -9,8 +9,8 @@
 ## **Desafios**
 
 #### Semana 1
-1. [x] **DIA 01**:  ~~*Crie um repositório para listar os projetos que serão desenvolvidos durante os 21 dias de código.**~~
-2. [ ] **DIA 02**:  *Faça um Hello World customizado com fontes, cores e magens.*
+1. [x] **DIA 01**:  ~~Crie um repositório para listar os projetos que serão desenvolvidos durante os 21 dias de código.~~
+2. [x] **DIA 02**:  ~~Faça um Hello World customizado com fontes, cores e magens~~
 3. [ ] **DIA 03**:  *Crie um botão animado.*
 4. [ ] **DIA 04**:	*Crie uma calculadora.*
 5. [ ] **DIA 05**:  *Desenvolva uma página customizada que exiba o erro 404.*
