@@ -16,6 +16,6 @@ def main(page = Page):
                     weight ="bold")],
             alignment="center"))
 
-    page.update
+    page.update()
 
 flet.app(target=main, view=flet.WEB_BROWSER)
