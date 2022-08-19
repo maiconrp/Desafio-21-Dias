@@ -19,7 +19,7 @@ def main(page : Page):
     page.theme_mode = "dark"
     
     def entrada(e):
-        displayContent.value = str(button.text)
+        displayContent.value += str(button.text)
         page.update()
         
     def soma(e):
@@ -70,7 +70,7 @@ def main(page : Page):
         operacoes.controls.append(
             ElevatedButton(text=op)
         )
-        print(op)
+        
 
     # Numeros
     botoesNumericos = GridView(
@@ -83,11 +83,11 @@ def main(page : Page):
         scale=0.7
     )
     for i in numeros:
-        button = ElevatedButton(text=i, on_click=entrada, data=str(i))         
+        global button
+        button = ElevatedButton(text=i, on_click=entrada)         
         botoesNumericos.controls.append(button) 
     
-    for a in botoesNumericos.controls:
-        print(str(a.data))
+   
     page.add(
         Card( 
             content=Container(
@@ -108,4 +108,4 @@ def main(page : Page):
 )
     page.update()
 
-flet.app(port=53164, target=main, view=flet.WEB_BROWSER)
+flet.app(port=53167, target=main, view=flet.WEB_BROWSER)
