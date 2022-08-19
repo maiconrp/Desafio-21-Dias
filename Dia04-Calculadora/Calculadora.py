@@ -14,13 +14,16 @@ from flet import (
 )
 
 def main(page : Page):
+    
     page.title = "Calculadora com flet"
     page.vertical_alignment = page.horizontal_alignment = "center"
     page.theme_mode = "dark"
     
     def entrada(e):
-        displayContent.value = str(button.text)
+        displayContent.value += str(e.data)
         page.update()
+        
+           
         
     def soma(e):
         page.update()
@@ -45,7 +48,7 @@ def main(page : Page):
     # Componentes:
 
     display = []
-    displayContent = Text(value="oi")
+    displayContent = Text(" ")
     numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     operadores = ["+", "-", "\\", "x", "%"]
     caracteres = ["(", ")", ","]
@@ -70,7 +73,7 @@ def main(page : Page):
         operacoes.controls.append(
             ElevatedButton(text=op)
         )
-        print(op)
+        
 
     # Numeros
     botoesNumericos = GridView(
@@ -82,12 +85,11 @@ def main(page : Page):
         run_spacing=5,
         scale=0.7
     )
-    for i in numeros:
-        button = ElevatedButton(text=i, on_click=entrada, data=str(i))         
-        botoesNumericos.controls.append(button) 
+    botoes = []
+    for i, num in enumerate(numeros):
+        botoesNumericos.controls.append(ElevatedButton(text=str(num), on_click=entrada, data=num)    ) 
     
-    for a in botoesNumericos.controls:
-        print(str(a.data))
+   
     page.add(
         Card( 
             content=Container(
@@ -108,4 +110,4 @@ def main(page : Page):
 )
     page.update()
 
-flet.app(port=53164, target=main, view=flet.WEB_BROWSER)
+flet.app(port=53167, target=main, view=flet.WEB_BROWSER)
