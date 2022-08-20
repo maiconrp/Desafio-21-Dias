@@ -6,8 +6,7 @@ from flet import (
     ElevatedButton, 
     Row,
     alignment, 
-    colors,
-    icons, 
+    colors, 
     Column,
     Card
 )
@@ -20,59 +19,72 @@ def main(page : Page):
     
     values = []
     operador = ['p']
-    result = [0]
+    result = ['0']
+    
    
     def entrada(e):
-        result[0] = 0
+        ponto = False
         if e.data in numeros:
-            if len(values) > 1 and values[-1] == ')':
-                values.append('*' + e.data)
-            
-            else:
-                values.append(e.data)
-                
-            Display.content.value = ''.join(values)
+            if ''.join(str(v) for v in values) == ''.join(str(v) for v in result):
+                print("values == result[0]")
+                values.clear()
+                result[0] = '0'
+
+            values.append(e.data)    
+            Display.content.value = ''.join(str(v) for v in values)
 
         elif e.data == "C":
+           
             Display.content.value = '0'
+            result[0] = '0'
             values.clear()
 
         elif e.data == "Del":
+            
             values.pop()
-            Display.content.value = ''.join(values)
+            Display.content.value = ''.join(str(v) for v in values)
         
         elif e.data in operadores:
             operador[0] = e.data
-            if values:
+            ponto = True
+
+            if result[0] != '0':
+                print(result[0])
+                values.clear()
+                values.extend([r for r in str(result[0])])
+                
+            else:
+                print("ok")
+                
+            if len(values) > 0:
                 if values[-1] not in operadores:
                     values.append(e.data)
                 else:
-                    values[-1] = operador
+                    values[-1] = operador[0]
 
-            Display.content.value = ''.join(values)
+            Display.content.value = ''.join(str(v) for v in values)
             
         elif e.data == "=":
-            Display.content.value = eval(''.join(values))
+            
+            result[0] = eval(''.join(str(v) for v in values))
             values.clear()
+            values.extend([r for r in str(result[0])])
+            Display.content.value = ''.join(str(v) for v in values)
 
         elif e.data == ".":
-            values.append(e.data)
-            Display.content.value = ''.join(values) 
+            if e.data not in values or ponto == True:
+                values.append(e.data)
+                Display.content.value = ''.join(str(v) for v in values) 
 
         elif e.data == "( )":
-            abre = values.reverse().index('(') 
-            fecha = values.reverse().index(')') 
-
-            parentese = True if abre < fecha else False
-
             if len(values) > 1:
-                if values[-1].isdigit() and parentese:
+                if values[-1].isdigit() or values[-1] == ')':
                     values.append(')')
             else:
                 if len(values) == 0:
                     values.append('(')
                 else:
-                    values.append('*(')
+                    values.append('(')
 
             Display.content.value = "".join(values)
         
@@ -110,7 +122,36 @@ def main(page : Page):
     
     for i, linha in enumerate(linhas):
         for char in linha:
-            botoes[i].controls.append(ElevatedButton(text=str(char), on_click=entrada, data=char, expand=1))
+            weight = "bold"
+            if char in operadores:
+                textColor = colors.BLACK45
+                bgCor = colors.LIGHT_BLUE_50
+                weight = "w900"
+
+            elif char == '=':
+                textColor = colors.WHITE
+                bgCor = colors.GREEN_900
+
+            elif char == 'Del':
+                textColor = colors.WHITE
+                bgCor = colors.RED
+            
+            else:
+                textColor = colors.WHITE
+                bgCor = None
+                
+                
+            texto = Text(value = str(char), weight = weight)
+
+            botoes[i].controls.append(
+                    ElevatedButton(
+                        content = texto,
+                        on_click=entrada, 
+                        data=char, 
+                        expand=1,
+                        color= textColor,
+                        bgcolor = bgCor,
+                        ))
 
     page.add(
         Card( 
