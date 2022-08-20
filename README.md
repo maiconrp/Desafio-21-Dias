@@ -13,8 +13,8 @@
 2. [x] **DIA 02**:  ~~Faça um Hello World customizado com fontes, cores e magens~~
 3. [x] **DIA 03**:  ~~Crie um botão animado.~~
 4. [x] **DIA 04**:	~~Crie uma calculadora.~~
-5. [ ] **DIA 05**:  *Desenvolva uma página customizada que exiba o erro 404.*
-6. [ ] **DIA 06**:	*Crie um card com o efeito glassmorphism.*
+5. [x] **DIA 05**:  ~~Desenvolva uma página customizada que exiba o erro 404.~~*
+6. [ ] **DIA 06**:	Crie um card com o efeito glassmorphism.
 7. [ ] **DIA 07**:	*Desenvolva um contador.*
 
 
