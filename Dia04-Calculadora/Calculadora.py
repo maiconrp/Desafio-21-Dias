@@ -1,7 +1,6 @@
 import flet
 from flet import (
-    Page, 
-    GridView, 
+    Page,
     Container, 
     Text, 
     ElevatedButton, 
@@ -19,95 +18,120 @@ def main(page : Page):
     page.vertical_alignment = page.horizontal_alignment = "center"
     page.theme_mode = "dark"
     
+    values = []
+    operador = ['p']
+    result = [0]
+   
     def entrada(e):
-        displayContent.value += str(e.data)
-        page.update()
+        result[0] = 0
+        if e.data in numeros:
+            if len(values) > 1 and values[-1] == ')':
+                values.append('*' + e.data)
+            
+            else:
+                values.append(e.data)
+                
+            Display.content.value = ''.join(values)
+
+        elif e.data == "C":
+            Display.content.value = '0'
+            values.clear()
+
+        elif e.data == "Del":
+            values.pop()
+            Display.content.value = ''.join(values)
         
-           
+        elif e.data in operadores:
+            operador[0] = e.data
+            if values:
+                if values[-1] not in operadores:
+                    values.append(e.data)
+                else:
+                    values[-1] = operador
+
+            Display.content.value = ''.join(values)
+            
+        elif e.data == "=":
+            Display.content.value = eval(''.join(values))
+            values.clear()
+
+        elif e.data == ".":
+            values.append(e.data)
+            Display.content.value = ''.join(values) 
+
+        elif e.data == "( )":
+            abre = values.reverse().index('(') 
+            fecha = values.reverse().index(')') 
+
+            parentese = True if abre < fecha else False
+
+            if len(values) > 1:
+                if values[-1].isdigit() and parentese:
+                    values.append(')')
+            else:
+                if len(values) == 0:
+                    values.append('(')
+                else:
+                    values.append('*(')
+
+            Display.content.value = "".join(values)
         
-    def soma(e):
+        
         page.update()
-        pass
-
-    def sub(e):
-        page.update()
-        pass
-
-    def div(e):
-        page.update()
-        pass
-
-    def mult(e):
-        page.update()
-        pass
-
-    def porc(e):
-        page.update()
-        pass
 
     # Componentes:
+    numeros = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'] 
+    operadores = ["+", "-", "/", "*", "%", ]
+    caracteres = ["(", ")", "."]
+    buttons = ["=", "del"]
 
-    display = []
-    displayContent = Text(" ")
-    numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-    operadores = ["+", "-", "\\", "x", "%"]
-    caracteres = ["(", ")", ","]
-    buttons = ["igual", "excluir"]
+    linhas = [
+        ["C", "( )", "%","/"],
+        [7, 8, 9, "*"],
+        [4, 5, 6, "-"],
+        [1, 2, 3, "+"],
+        [".", 0, "Del", "="]
+    ]
 
     # Display
     Display = Container(
-        margin = 10,
         padding = 10,
         alignment = alignment.center,
         bgcolor = colors.PRIMARY,
         width = 450,
         height = 200,
         border_radius = 10,
-        content = displayContent
+        content = Text("0", size=35)
         
     )
 
-    # Operações
-    operacoes = Column(alignment="center")
-    for op in operadores:
-        operacoes.controls.append(
-            ElevatedButton(text=op)
-        )
-        
-
-    # Numeros
-    botoesNumericos = GridView(
-        expand=1,
-        runs_count=5,
-        max_extent=150,
-        child_aspect_ratio=1.0,
-        spacing=5,
-        run_spacing=5,
-        scale=0.7
-    )
-    botoes = []
-    for i, num in enumerate(numeros):
-        botoesNumericos.controls.append(ElevatedButton(text=str(num), on_click=entrada, data=num)    ) 
+    # botoes  
+    botoes = [Row(spacing=20), Row(spacing=20), Row(spacing=20), Row(spacing=20), Row(spacing=20)]
     
-   
+    for i, linha in enumerate(linhas):
+        for char in linha:
+            botoes[i].controls.append(ElevatedButton(text=str(char), on_click=entrada, data=char, expand=1))
+
     page.add(
         Card( 
             content=Container(
                 content=Column([
                     Display,
-                    botoesNumericos
-                ]),
+                    *botoes]),
                 margin = 10,
-                padding = 10,
+                padding = 20,
                 alignment = alignment.center,
                 bgcolor = colors.BLACK87,
-                width = 450,
-                height = 600,
+                width = 350,
                 border_radius = 10,  
 
-    )
+    ), 
+     scale=1.5
     )
 )
     page.update()
 
-flet.app(port=53167, target=main, view=flet.WEB_BROWSER)
+try:
+    flet.app(port=53167, target=main, view=flet.WEB_BROWSER)
+except:
+    flet.app(port=53167, target=main, view=flet.WEB_BROWSER)
