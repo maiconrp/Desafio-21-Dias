@@ -1,0 +1,91 @@
+body{
+    margin: 0px;
+    background-color: rgb(243, 237, 237);
+    
+}
+.Container{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    width: 100vw;
+    height: 100vh;
+    
+}
+.Logo-Master{
+    width: 7em;
+    height:auto;
+}
+#divider{
+    rotate: 90deg;
+    width: 3.54em;
+    margin:0px;   
+}
+
+p{
+    font-size: 1.2em;
+    color: #ffff
+}
+
+.Card-Container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+
+    width: 36.25rem;
+    height: 20.13rem;
+    opacity:85%;
+    background:rgb(143, 15, 182);
+    
+
+    border-radius: 1rem;
+    box-shadow: 0px 18px 41px 12px rgb(155, 153, 153);
+    
+}
+.content{
+    position:relative;
+    top:50%;
+    
+}
+.FloatImgs{
+    position: absolute;
+    right:30.6rem;
+    border-radius:0.5rem;
+    width: auto;
+    height: 20.13rem;
+    z-index: -1;
+}
+.Glass{
+    width: 7rem;
+    height: 7rem;
+
+    position: absolute;
+
+    background-image: linear-gradient(225deg, #fff, rgba(255, 255, 255, 0.178));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    
+    opacity: 80%;
+    border-radius:0.5rem;
+    box-shadow: 10px 10px 44px -13px rgba(0,0,0,0.18);
+    /* border: 1px solid black; */
+}
+
+#glass1{
+    top:25rem;
+    right:23rem;
+}
+#glass2{
+    top:22rem;
+    right:57.25rem;
+}
+#glass3{
+    bottom:28rem;
+    right:30rem;
+}
+
+#glass4{
+    bottom:27rem;
+    left:22rem;
+}
