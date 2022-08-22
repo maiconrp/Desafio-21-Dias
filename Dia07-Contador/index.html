@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
     <title>Contador</title>
 </head>
 <body>
+    <div id="Container">
+        <div id="Contador">
+            <div id="Contador_Display">
+                <div class="Contador_Cont" id="horas"><p>Horas</p></div>
+                <div class="Contador_Cont" id="minutos"><p>Minutos</p></div>
+                <div class="Contador_Cont" id="segundos"><p>Segundos</p></div>
+            </div>
+            <div id="Contador_Botoes">
+                <button class="Contador_Botao" id="botao_inicio" onclick="clique()">Incio</button>
+                <button class="Contador_Botao" id="botao_pausa" onclick="clique()">Pausa</button>
+                <button class="Contador_Botao" id="botao_reinicia" onclick="clique()">Reinicia</button>
+            </div>
+        </div>
+    </div>
     
 </body>
+    <script src="script.js"></script>
 </html>

@@ -1,0 +1,23 @@
+body{
+    margin: 0px;
+}
+
+#Container, #Contador, #Contador_Display{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    #Contador{
+        width: 30vw;
+        height: auto;
+        border: 1px solid red;
+    }
+        #Contador_Display{
+            width: 30vw;
+            height: auto;
+            flex-direction: row;
+            
+        }
