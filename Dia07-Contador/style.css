@@ -2,7 +2,7 @@ body{
     margin: 0px;
 }
 
-#Container, #Contador, #Contador_Display{
+#Container, #Contador, #Contador_Display, .Contador_Cont{
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -11,13 +11,37 @@ body{
     align-items: center;
 }
     #Contador{
-        width: 30vw;
-        height: auto;
+        width: 50vw;
+        height: 40vh;
         border: 1px solid red;
+        
     }
         #Contador_Display{
-            width: 30vw;
-            height: auto;
+            width: 90%;
+            height: 90%;
+            border: 1px solid green;
             flex-direction: row;
             
         }
+            .Contador_Cont{
+                width: 33.3%;
+                height: 33.3%;
+                font: 5em sans-serif;
+                margin: 1%;
+                border: 1px solid blue;
+            }
+                p{
+                   
+                    
+                    width: 33.3%;
+                    height: 33.3%;
+                    border: 1px solid blue;
+                    text-align: center;
+                    align-items: center;
+                }
+        #Contador_Botoes{
+            position: absolute;
+            top:68%;
+        }
+            
+        
