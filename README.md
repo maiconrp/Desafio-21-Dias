@@ -15,6 +15,9 @@
 4. [x] **DIA 04**:	~~Crie uma calculadora.~~
 5. [x] **DIA 05**:  ~~Desenvolva uma página customizada que exiba o erro 404.~~*
 6. [x] **DIA 06**:	~~Crie um card com o efeito glassmorphism.~~
-7. [ ] **DIA 07**:	*Desenvolva um contador.*
+7. [x] **DIA 07**:	~~Desenvolva um contador.~~
 
+#### Semana 2
+1. [ ] **DIA 01**:
+2. [ ] **DIA 02**:
 
