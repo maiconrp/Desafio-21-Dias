@@ -1,149 +1,157 @@
-import logging
-import os
-from itertools import islice
-
 import flet
 from flet import (
-    Column,
-    Container,
-    GridView,
-    Icon,
-    IconButton,
     Page,
+    Container, 
+    Text, 
+    ElevatedButton, 
     Row,
-    SnackBar,
-    Text,
-    TextButton,
-    TextField,
-    UserControl,
-    alignment,
+    alignment, 
     colors,
-    icons,
+    icons, 
+    Column,
+    Card
 )
 
-# logging.basicConfig(level=logging.INFO)
+def main(page : Page):
+    
+    page.title = "Calculadora com flet"
+    page.vertical_alignment = page.horizontal_alignment = "center"
+    page.theme_mode = "dark"
+    
+    values = []
+    operador = ['p']
+    result = [0]
+   
+    def entrada(e):
+        result[0] = 0
+        if e.data in numeros:
+            values.append(e.data)
+            Display.content.value = ''.join(values)
 
-os.environ["FLET_WS_MAX_MESSAGE_SIZE"] = "8000000"
+        elif e.data == "C":
+            Display.content.value = '0'
+            values.clear()
 
+        elif e.data == "Del":
+            values.pop()
+            Display.content.value = ''.join(values)
+        
+        elif e.data in operadores:
+            operador[0] = e.data
+            if values:
+                if values[-1] not in operadores:
+                    values.append(e.data)
+                else:
+                    values[-1] = operador
 
-class IconBrowser(UserControl):
-    def __init__(self, expand=False, height=500):
-        super().__init__()
-        if expand:
-            self.expand = expand
-        else:
-            self.height = height
+            Display.content.value = ''.join(values)
+            
+        elif e.data == "=":
+            result[0] = calcular(values, operador[0])
+            values.clear()
+            Display.content.value = result[0]
 
-    def build(self):
-        def batches(iterable, batch_size):
-            iterator = iter(iterable)
-            while batch := list(islice(iterator, batch_size)):
-                yield batch
+        elif e.data == ".":
+            values.append(e.data)
+            values[:values.index(".")]  
 
-        # fetch all icon constants from icons.py module
-        icons_list = []
-        list_started = False
-        for key, value in vars(icons).items():
-            if key == "TEN_K":
-                list_started = True
-            if list_started:
-                icons_list.append(value)
+        elif e.data == "( )":
+            pass
+            if len(values) == 0:
+                values.append('(')
 
-        search_txt = TextField(
-            expand=1,
-            hint_text="Enter keyword and press search button",
-            autofocus=True,
-            on_submit=lambda e: display_icons(e.control.value),
-        )
+            elif len(values) > 1 and values[-1].isdigit() or values[-1] == '(':
+                values.append(')')
 
-        def search_click(e):
-            display_icons(search_txt.value)
+            else:
+                values.append('(')
+            Display.content.value = "".join(values)
+        
+        
+        page.update()
 
-        search_query = Row(
-            [search_txt, IconButton(icon=icons.SEARCH, on_click=search_click)]
-        )
+    def calcular(values, operador): 
+        indexsOperadores = []
+        
+        if operador == 'p':
+            return ''.join(values)
 
-        search_results = GridView(
-            expand=1,
-            runs_count=10,
-            max_extent=150,
-            spacing=5,
-            run_spacing=5,
-            child_aspect_ratio=1,
-        )
-        status_bar = Text()
+        limiter = values.index(operador)
+               
+        term1 = float(''.join(str(v) for v in values[:limiter]))
+        term2 = float(''.join(str(v) for v in values[limiter+1:]))       
 
-        def copy_to_clipboard(e):
-            icon_key = e.control.data
-            print("Copy to clipboard:", icon_key)
-            self.page.set_clipboard(e.control.data)
-            self.page.show_snack_bar(SnackBar(Text(f"Copied {icon_key}"), open=True))
+        if operador == 'x':
+            result = term1*term2
 
-        def search_icons(search_term: str):
-            for icon_name in icons_list:
-                if search_term != "" and search_term in icon_name:
-                    yield icon_name
+        elif operador == '/':
+            result = term1/term2
 
-        def display_icons(search_term: str):
+        elif operador == '+':
+            result = term1+term2
 
-            # clean search results
-            search_query.disabled = True
-            self.update()
+        elif operador == '-':
+            result = term1-term2
+                
+        elif operador == '%':
+            result = (term1/100)*term2
+        
+        return str(result)
+    # Componentes:
+    numeros = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'] 
+    operadores = ["+", "-", "/", "x", "%"]
+    caracteres = ["(", ")", "."]
+    buttons = ["=", "del"]
 
-            search_results.clean()
+    linhas = [
+        ["C", "( )", "%","/"],
+        [7, 8, 9, "x"],
+        [4, 5, 6, "-"],
+        [1, 2, 3, "+"],
+        [".", 0, "Del", "="]
+    ]
 
-            for batch in batches(search_icons(search_term.lower()), 200):
-                for icon_name in batch:
-                    icon_key = f"icons.{icon_name.upper()}"
-                    search_results.controls.append(
-                        TextButton(
-                            content=Container(
-                                content=Column(
-                                    [
-                                        Icon(name=icon_name, size=30),
-                                        Text(
-                                            value=f"{icon_name}",
-                                            size=12,
-                                            width=100,
-                                            no_wrap=True,
-                                            text_align="center",
-                                            color=colors.ON_SURFACE_VARIANT,
-                                        ),
-                                    ],
-                                    spacing=5,
-                                    alignment="center",
-                                    horizontal_alignment="center",
-                                ),
-                                alignment=alignment.center,
-                            ),
-                            tooltip=f"{icon_key}\nClick to copy to a clipboard",
-                            on_click=copy_to_clipboard,
-                            data=icon_key,
-                        )
-                    )
-                status_bar.value = f"Icons found: {len(search_results.controls)}"
-                self.update()
+    # Display
+    Display = Container(
+        padding = 10,
+        alignment = alignment.center,
+        bgcolor = colors.PRIMARY,
+        width = 450,
+        height = 200,
+        border_radius = 10,
+        content = Text("0", size=35)
+        
+    )
 
-            if len(search_results.controls) == 0:
-                self.page.show_snack_bar(SnackBar(Text("No icons found"), open=True))
-            search_query.disabled = False
-            self.update()
+    # botoes  
+    botoes = [Row(spacing=25), Row(spacing=25), Row(spacing=25), Row(spacing=25), Row(spacing=25)]
+    
+    for i, linha in enumerate(linhas):
+        for char in linha:
+            botoes[i].controls.append(ElevatedButton(text=str(char), on_click=entrada, data=char, expand=1))
 
-        return Column(
-            [
-                search_query,
-                search_results,
-                status_bar,
-            ],
-            expand=True,
-        )
+    page.add(
+        Card( 
+            content=Container(
+                content=Column([
+                    Display,
+                    *botoes]),
+                margin = 10,
+                padding = 20,
+                alignment = alignment.center,
+                bgcolor = colors.BLACK87,
+                width = 400,
+                border_radius = 10,  
 
+    ), 
+     scale=1.5
+    )
+)
+    page.update()
 
-def main(page: Page):
-    page.title = "Flet icons browser"
-    page.theme_mode = "light"
+# try:
+#     flet.app(port=53167, target=main, view=flet.WEB_BROWSER)
+# except:
+#     flet.app(port=53167, target=main, view=flet.WEB_BROWSER)
 
-    page.add(IconBrowser(expand=True))
-
-
-flet.app(target=main)
+print(eval('9((10))'))
