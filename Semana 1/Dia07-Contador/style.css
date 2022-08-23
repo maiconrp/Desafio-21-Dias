@@ -8,8 +8,6 @@
 }
 
 #Container, #Contador, #Contador_Display, .Contador_Cont{
-    width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,9 +16,14 @@
     border-radius: 1rem;
 
 }
+#Container{
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+}
     #Contador{
-        width: 45vw;
-        height: 40vh;
+        width: 45em;
+        height:17em;
         background-color: #ffff;
         box-shadow:
             3.4px 3.4px 4.5px rgba(0, 0, 0, 0.022),
@@ -32,16 +35,15 @@
   
     }
         #Contador_Display{
-            width: 90%;
-            height: 90%;
+            width: 40em;
+            height: 16em;
             flex-direction: row;
             
         }
             .Contador_Cont{
-                width: 40%;
-                height: 95%;
-                font: 5em sans-serif;
-                margin: 1%;
+                width: 4em;
+                height: 1.5em;
+                margin: 0.05em;
                 background-color: #ffff;
                 box-shadow:
                     3.4px 3.4px 4.5px rgba(0, 0, 0, 0.022),
@@ -57,7 +59,7 @@
                    
                     position: relative;
                     bottom: -1em;
-                    font: 1rem sans-serif;
+                    font: 0.1em sans-serif;
 
                     text-align: center;
                     align-items: center;
