@@ -18,11 +18,11 @@
 7. [x] **DIA 07**:	~~Desenvolva um contador.~~
 
 #### Semana 2
-1. [ ] **DIA 01**:
-2. [ ] **DIA 02**:
-3. [ ] **DIA 03**:
-4. [ ] **DIA 04**:
-5. [ ] **DIA 05**:
-6. [ ] **DIA 06**:
-7. [ ] **DIA 07**:
+1. [ ] **DIA 08**:  *Desenvolva um toggle que altere o tema para  claro e escuro*
+2. [ ] **DIA 09**:  *Crie uma animação de loading*
+3. [ ] **DIA 10**:  *Use a lib Particle.js do JavaScript*
+4. [ ] **DIA 11**:  *Crie o layout de um formulário de login*
+5. [ ] **DIA 12**:  *Desenvolva uma galeria de imagens*
+6. [ ] **DIA 13**:  *Desenvolva um menu responsivo*
+7. [ ] **DIA 14**:  *Crie um formulário de quizzes*
 
