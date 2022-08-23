@@ -9,12 +9,20 @@
 ## **Desafios**
 
 #### Semana 1
-1. [x] **DIA 01**:  ~~*Crie um repositório para listar os projetos que serão desenvolvidos durante os 21 dias de código.**~~
-2. [ ] **DIA 02**:  *Faça um Hello World customizado com fontes, cores e magens.*
-3. [ ] **DIA 03**:  *Crie um botão animado.*
-4. [ ] **DIA 04**:	*Crie uma calculadora.*
-5. [ ] **DIA 05**:  *Desenvolva uma página customizada que exiba o erro 404.*
-6. [ ] **DIA 06**:	*Crie um card com o efeito glassmorphism.*
-7. [ ] **DIA 07**:	*Desenvolva um contador.*
+1. [x] **DIA 01**:  ~~Crie um repositório para listar os projetos que serão desenvolvidos durante os 21 dias de código.~~
+2. [x] **DIA 02**:  ~~Faça um Hello World customizado com fontes, cores e magens~~
+3. [x] **DIA 03**:  ~~Crie um botão animado.~~
+4. [x] **DIA 04**:	~~Crie uma calculadora.~~
+5. [x] **DIA 05**:  ~~Desenvolva uma página customizada que exiba o erro 404.~~*
+6. [x] **DIA 06**:	~~Crie um card com o efeito glassmorphism.~~
+7. [x] **DIA 07**:	~~Desenvolva um contador.~~
 
+#### Semana 2
+1. [ ] **DIA 01**:
+2. [ ] **DIA 02**:
+3. [ ] **DIA 03**:
+4. [ ] **DIA 04**:
+5. [ ] **DIA 05**:
+6. [ ] **DIA 06**:
+7. [ ] **DIA 07**:
 
