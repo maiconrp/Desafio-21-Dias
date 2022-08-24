@@ -4,22 +4,23 @@ var interval = 100
 function init(){
     const LABEL = document.getElementById("Label")
     const BARRA = document.getElementById("Barra_loading");
+    const BARRA_CONTENT = document.getElementById("Barra_loading_content");
     const CONT_BARRA = document.getElementById("Container_loading");
     
     document.getElementById("Carregamento").style.display = "flex"
     document.getElementById("Iniciar").style.display = "none"
 
-    LABEL.innerHTML = FRASES[random(0, 17)]
+    LABEL.innerHTML = FRASES[random(0, FRASES.length)]
 
     bar = setInterval(carregamento, interval);  
 
     function carregamento(){
-        if(j<75){
+        if(j<=75){
             interval = random(1, 100)
             let porcCarregamento = Math.floor((j*100)/75) + '%'
-            let label = FRASES[random(0, 17)]
+            let label = FRASES[random(0, FRASES.length)]
 
-            BARRA.innerHTML = j / 10 < 10? porcCarregamento : BARRA.innerHTML 
+            BARRA_CONTENT.innerHTML = j%4 == 0? porcCarregamento: BARRA_CONTENT.innerHTML
             LABEL.innerHTML = j % 25 == 0? label : LABEL.innerHTML
 
             BARRA.style.width = j++ + "em" 
@@ -27,6 +28,8 @@ function init(){
         }
         else{
             clearInterval(bar)
+            BARRA_CONTENT.innerHTML = '100%'
+            BARRA.style.alignItems = "center"
             LABEL.innerHTML = "Concluído"
             CONT_BARRA.style.display = "none"
             LABEL.style.scale = "1.5"
@@ -37,7 +40,9 @@ function init(){
         
     }
 }
-function random(min, max){return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min)) + min);}
+function random(min, max){
+  return Math.floor(Math.random() * 
+        (Math.floor(max) - Math.ceil(min)) + min);}
 
 function move() {
     const element = document.getElementById("Barra_loading");

@@ -2,7 +2,7 @@ body{
     margin:0;
 }
 
-.Container, #Carregamento, #Container_loading, #Barra_loading, #Label{
+.Container, #Carregamento, #Container_loading, #Barra_loading, #Label, footer{
     display: flex;
     flex-direction: column;
     justify-content:center;
@@ -45,7 +45,7 @@ body{
     }
         #Container_loading{
             border-radius: 100em;
-            padding-left: 1em;
+            padding: 0 1em 0 1em;
             align-items:flex-start;
             width: 75em;
             height: 3em;
@@ -58,6 +58,10 @@ body{
                 36.5px 36.5px 47.5px rgba(0, 0, 0, 0.048),
                 100px 100px 130px rgba(0, 0, 0, 0.07)
                 ;
+                box-shadow:
+                inset,
+                3.4px 3.4px 4.5px rgba(0, 0, 0, 0.022),
+                
         }
             #Barra_loading{
                 border-radius: 100em;
@@ -65,9 +69,28 @@ body{
                 color:white;
                 transition: all 0.1s;
                 background-color: green;
-                
-                
-            }
+                align-items:flex-end;
+                box-shadow:
+                3.4px 3.4px 4.5px rgba(0, 0, 0, 0.022),
+                8.7px 8.7px 11.3px rgba(0, 0, 0, 0.031),
+                17.7px 17.7px 23px rgba(0, 0, 0, 0.039),
+                36.5px 36.5px 47.5px rgba(0, 0, 0, 0.048),
+                100px 100px 130px rgba(0, 0, 0, 0.07)
+                ;
+            }   
+                #Barra_loading_content{
+                    border-radius: 100em;
+                    background-color: white;
+                    color:green;
+                    padding:0.5em;
+                    box-shadow:
+                        3.4px 3.4px 4.5px rgba(0, 0, 0, 0.022),
+                        8.7px 8.7px 11.3px rgba(0, 0, 0, 0.031),
+                        17.7px 17.7px 23px rgba(0, 0, 0, 0.039),
+                        36.5px 36.5px 47.5px rgba(0, 0, 0, 0.048),
+                        100px 100px 130px rgba(0, 0, 0, 0.07);
+                    font-weight: bolder;
+                }
         #Label{
             border-radius: 100em;
             padding: 0 1em 0 1em;
@@ -85,4 +108,11 @@ body{
             color:dark;
             transition: all 1s;
         }
-    
+        footer{
+            position: absolute;
+            bottom:0;
+            width: 100vw;
+            height: auto;
+            background-color: #ffff;
+            text-align: center;
+        }
