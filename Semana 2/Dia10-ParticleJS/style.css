@@ -1,8 +1,11 @@
-body{
+*{
     margin:0;
+}
+body{
     width: 100vw;
     height: 100vh;
 }
+
 #particles-js{
     width: 100%;
     height: 100%;
@@ -13,13 +16,23 @@ body{
     text-align: center;
 
 }
-p{
-    text-align: center;
-}
+
 .box {
-    width: 5em;
+    width: 1em;
     height: auto;
-    position:fixed;
+    font-size: 5em;
     
     }
 
+#x{
+    width: 70vw;
+    height: 0vh;
+    position: fixed;
+    top:50vw - height;
+}
+#y{
+    width: 0vw;
+    height: 100vh;;
+    position: fixed;
+    left:50vw - height;
+}

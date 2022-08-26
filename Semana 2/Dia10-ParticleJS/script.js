@@ -4,45 +4,37 @@ const tela = document.getElementById("particles-js");
 const pageX = document.getElementById("x");
 const pageY = document.getElementById("y");
 
-function updateDisplay(event) {
-    
-    var altura = window.screen.height;
-    var largura = window.screen.width;
-    x = event.pageX;
-    y = event.pageY;
+const altura = window.innerHeight/2;    
+const largura = window.innerWidth/2;
 
-   
-        // box.style.top = 0.8*y + 'px'
-    // box.style.left = 0.8*x + 'px'
+function rotate_player(event) {
+    var y = event.clientY - window.innerHeight/2;
+    var x = event.clientX - window.innerWidth/2;
 
-    // Direita em baixo
-    if(x > largura/2 && y > altura/2){
-        box.style.rotate = "135deg"
-        box.style.backgroundColor = "yellow"
-    }
-    // Esquerda em baixo
-    else if(x < largura/2 && y > altura/2){ // baixo
-        box.style.rotate = "-135deg"
-        box.style.backgroundColor = "blue"
-    }
-    // Esquerda em cima
-    else if(x < largura/2 && y < altura/2){
-        box.style.rotate = "-45deg"
-        box.style.backgroundColor = "green"
+    var hip = Math.hypot(x, y)
+    var seno = Math.sin(y, hip)
 
-    }
-    // Direita em cima
-    else if(x > largura/2 && y < altura/2){
-        box.style.rotate = "45deg"
-        box.style.backgroundColor = "red"
-    }
+    // if(seno < 0) seno *= -1
 
-    pageX.innerText = x;
-    pageY.innerText = y;
+    var quadrant = getQuadrant(x, y)
+    angulo = quadrant - (seno * (180 / Math.PI))
 
+    // if (quadrant == 90 || quadrant == 270) angulo -= 90
+
+    box.style.transform = `rotate(${angulo}deg)`
 }
 
-body.addEventListener("mousemove", updateDisplay, false);
+function getQuadrant(x, y) {
+    let quadrant = 0
+    if(x < largura && y < altura) quadrant = 270
+    else if(x > largura && y > altura) quadrant = 90
+
+    return quadrant
+}
+
+
+
+body.addEventListener("mousemove", rotate_player, false);
 // body.addEventListener("mouseenter", updateDisplay, false);
 // body.addEventListener("mouseleave", updateDisplay, false);
 
