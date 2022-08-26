@@ -17,10 +17,12 @@ body{
 
 }
 
-.box {
+#player {
     width: 1em;
     height: auto;
     font-size: 5em;
+    position: fixed;
+    top:50vw - height;
     
     }
 
