@@ -4,19 +4,20 @@
 body{
     width: 100vw;
     height: 100vh;
+    background-color: black;
 }
-
-#particles-js{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items:center;
-    text-align: center;
-
+#point{
+    position: fixed;
+    top: 50vh-height;
+    left:50vw -width;
 }
-
+.tiro{
+    position: fixed;
+    top: 50vh-height;
+    left:50vw -width;
+    transition: all 1s;
+    /* display:none; */
+}
 #player {
     width: 1em;
     height: auto;
@@ -25,6 +26,16 @@ body{
     top:50vw - height;
     
     }
+#particles-js{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    z-index: 99999;
+
+}
 
 #x{
     width: 70vw;

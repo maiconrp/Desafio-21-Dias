@@ -33,7 +33,6 @@ function getQuadrant(x, y) {
 }
 
 
-
 body.addEventListener("mousemove", rotate_player, false);
 // body.addEventListener("mouseenter", updateDisplay, false);
 // body.addEventListener("mouseleave", updateDisplay, false);
