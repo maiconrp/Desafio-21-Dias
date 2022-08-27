@@ -10,19 +10,22 @@
 <body>
     <div class="Container">
         <form action="POST">
-            <h1>Cadastre-se</h1>
-            <p>Campos obrigatórios marcados por <abbr title="required">*</abbr>.</p>
+            <div class="Glass" id="g1"></div>
+            <div class="Glass" id="g2"></div>
+            <div class="Glass" id="g3"></div>
+            <div class="Glass" id="g4"></div>
+            <h1 class="Title">Cadastre-se</h1>
             <!-- <fieldset>
                 <legend>Informações da conta</legend>
                 <p>
                     <label for="nick">Nick</label>
                     <input type="text" name="nick" id="nick"/>
-                    <label for="email"><abbr title="required">*</abbr></label>
+                    <label for="email"></label>
                 </p>
                 <p>
                     <label for="email">Email: </label>
                     <input type="text" name="email" id="email"/> 
-                    <label for="email"><abbr title="required">*</abbr></label>
+                    <label for="email"></label>
                    
                 </p>
                 <p>
@@ -33,30 +36,33 @@
             <section>
                 <p>
                     <label for="nome">Nome: </label>
-                    <label for="nome"><abbr title="required">*</abbr></label>
+                    <label for="nome"></label>
                     <input type="text" name="nome" id="nome"/> 
                 </p>
                 <p>
-                    <label for="sobrenome">Sobrenome</label>
-                    <label for="email"><abbr title="required">*</abbr></label>
+                    <label for="sobrenome">Sobrenome:</label>
+                    <label for="email"></label>
                     <input type="text" name="sobrenome" id="sobrenome">
                 </p>
                 <p>
                     <label for="email">Email: </label>
-                    <label for="email"><abbr title="required">*</abbr></label>
+                    <label for="email"></label>
                     <input type="text" name="email" id="email"/> 
                    
                 </p>               
                 <p>
-                    <label for="idade">Idade</label>
-                    <label for="email"><abbr title="required">*</abbr></label>
+                    <label for="idade">Idade:</label>
+                    <label for="email"></label>
                     <input type="number" name="idade" id="idade">
+
+                </p>
+                <p>
+            <button type="submit">Cadastrar</button>
 
                 </p>
             </section>
 
             
-            <button type="submit">Cadastrar</button>
         </form>
     </div>
 </body>
